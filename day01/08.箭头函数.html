@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="按钮" id="btn">
+</body>
+<script>
+    var add = () => {
+        console.log('这是箭头函数')
+    }
+    add()
+
+    //普通函数使用定时器,定时器内this指向window
+    // document.getElementById('btn').onclick = function () {
+    //   var _this = this
+    //   setTimeout(function () {
+    //     _this.style.backgroundColor = 'red'
+    //   }, 1000)
+    // }
+
+    document.getElementById('btn').onclick = function () {
+        // 箭头函数内部的 this, 永远和 箭头函数外部的 this 保持一致；
+        setTimeout(() => {
+            this.style.backgroundColor = 'pink'
+        }, 1000)
+    }
+
+
+    // 箭头函数的几种变形写法
+    //只有一行执行代码可省略{}和retur
+    var fn1 = (x,y)=>x+y;
+    //只有一个参数可省略（）
+    let fn2 = x=>{return x}
+    //参数和执行代码都只有一个，全部省略
+    let fn3 = x=>x+1
+    // console.log(fn3(1))
+</script>
+
+</html>
